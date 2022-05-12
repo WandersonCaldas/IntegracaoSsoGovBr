@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    string link = TempData["LinkGovBr"] != null ? TempData["LinkGovBr"].ToString() : "#";
+    TempData.Keep();
+}
+
+<div class="row">
+    <h1>Login</h1>
+    <p class="lead">Para realizar o Login favor precione o botão abaixo.</p>
+    <p><a href="@link" class="btn btn-primary btn-lg">Entrar com GovBr &raquo;</a></p>
+</div>

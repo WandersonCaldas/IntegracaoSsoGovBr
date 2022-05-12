@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Documentação
+/eGovBr/GovBr.MVC/bin
+/eGovBr/GovBr.MVC/obj/Debug
+/eGovBr/packages
+/eGovBr/.vs/eGovBr
+/.vs
