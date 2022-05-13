@@ -1,11 +1,44 @@
-﻿@{
+﻿@using GovBr.MVC.Models;
+@model JsonModel
+@{
     ViewBag.Title = "Home Page";
-    string link = TempData["LinkGovBr"] != null ? TempData["LinkGovBr"].ToString() : "#";
+    string linkLogin = TempData["LoginGovBr"] != null ? TempData["LoginGovBr"].ToString() : "#";
+    string linkLogout = TempData["LogoutGovBr"] != null ? TempData["LogoutGovBr"].ToString() : "#";
     TempData.Keep();
 }
-
 <div class="row">
     <h1>Login</h1>
     <p class="lead">Para realizar o Login favor precione o botão abaixo.</p>
-    <p><a href="@link" class="btn btn-primary btn-lg">Entrar com GovBr &raquo;</a></p>
+    <p>
+        <a href="@linkLogin" class="btn btn-primary btn-lg">Entrar com GovBr &raquo;</a>
+        <a href="@linkLogout" class="btn btn-danger btn-lg" disabled>Sair <i class="glyphicon glyphicon-user"></i></a>
+    </p>
 </div>
+
+@if (Model != null)
+{
+    <div class="jumbotron">
+        <div class="row">
+            <label>Nome</label>
+            @Html.TextBoxFor(c => c.Nome, new { @class = "form-control", disabled = "true" })
+        </div>
+        <div class="row">
+            <label>Telefone</label>
+            @Html.TextBoxFor(c => c.Telefone, new { @class = "form-control", disabled = "true" })
+        </div>
+        <div class="row">
+            <label>Email</label>
+            @Html.TextBoxFor(c => c.Email, new { @class = "form-control", disabled = "true" })
+        </div>
+        <div class="row">
+            <label>CPF</label>
+            @Html.TextBoxFor(c => c.CPF, new { @class = "form-control", disabled = "true" })
+        </div>
+        <div class="row">
+            <label>Json</label>
+            <div class="form-control" style="height:auto">
+                @Model.JsonPayload
+            </div>
+        </div>
+    </div>
+}
