@@ -26,7 +26,7 @@ namespace GovBr.MVC.Controllers
             string state = random.Next().ToString("X");
             string nonce = random.Next().ToString("X");
             string scope = "openid+(email/phone)+profile+govbr_confiabilidades";//"openid+(email/phone)+profile+govbr_empresa+govbr_confiabilidades";
-            string redirectUrl = Url.Encode("http://ana-d.ikhon.com.br/proton/ProtocoloPublico/Home/Index"); //url de redirecinamento após autenticação
+            string redirectUrl = Url.Encode(""); //url de redirecinamento após autenticação
             string link = $"{_urlBaseAccess}authorize?" +
                 $"response_type=code&" +
                 $"client_id={_clientId}&" +
@@ -37,7 +37,7 @@ namespace GovBr.MVC.Controllers
             TempData["LoginGovBr"] = link;
 
             string linkLogout = $"{_urlBaseAccess}logout?" +
-                $"post_logout_redirect_uri={Url.Encode("http://ana-d.ikhon.com.br/proton/ProtocoloPublico/Account/Index")}";
+                $"post_logout_redirect_uri={Url.Encode("")}";
             TempData["LogoutGovBr"] = linkLogout;
 
             return View();
@@ -46,7 +46,7 @@ namespace GovBr.MVC.Controllers
         public ActionResult Autenticate(string code)
         {
             string tokenRequest = Convert.ToBase64String(ASCIIEncoding.ASCII.GetBytes($"{_clientId}:{_clientSecret}"));
-            string resource = $"token?grant_type=authorization_code&code={code}&redirect_uri={Url.Encode("http://ana-d.ikhon.com.br/proton/ProtocoloPublico/Home/Index")}";
+            string resource = $"token?grant_type=authorization_code&code={code}&redirect_uri={Url.Encode("")}";
 
             var request = new RestRequest(resource,Method.POST);
             request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
